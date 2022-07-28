@@ -1,0 +1,55 @@
+<div
+  class="card m-auto position-relative"
+  style="width: 18rem; cursor: pointer"
+>
+  <div class="img-container position-relative" style="overflow: hidden">
+    <img [src]="product.image" class="card-img-top" alt="..." />
+    <div
+      class="overlay bg-dark position-absolute top-0 w-100 h-100 opacity-50"
+    ></div>
+    <div
+      class="rate bg-warning position-absolute w-100"
+      style="bottom: -50px; transition: 0.5s ease"
+    >
+      <div class="container">
+        <div class="row text-danger justify-content-center fw-bold">
+          <span class="col-4 text-center">{{ product.rating.rate }}</span>
+          <span class="col-4 text-center">{{ product.rating.count }}</span>
+          <span class="col-4 text-center" (click)="showDetails(product.id)"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title" appHighlightDirective>{{ product.title }}</h5>
+    <span class="price fw-bold text-danger">{{
+      product.price | currency: "USD"
+    }}</span>
+    <p class="card-text">
+      {{ product.description | sliceString }}
+    </p>
+    <div class="row mt-2 gap-1">
+      <span class="add-cart col-1" (click)="setSelectedProduct(product)">
+        <i class="fa-solid fa-cart-shopping" style="cursor: pointer"></i>
+      </span>
+      <span class="add-fav col-1">
+        <i class="fa-solid fa-heart" style="cursor: pointer"></i>
+      </span>
+    </div>
+  </div>
+  <span class="category position-absolute text-light bg-danger py-1 px-2">{{
+    product.category
+  }}</span>
+  <div class="circles-con my-2 px-2 d-flex gap-1">
+    <p
+      class="rounded-circle bg-danger"
+      *appRepeat="5; let i = index"
+      style="width: 10px; height: 10px"
+    ></p>
+  </div>
+  <div>
+    <a [routerLink]="['/productdtl', product.id]">Show Details</a>
+  </div>
+</div>

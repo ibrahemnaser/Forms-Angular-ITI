@@ -1,0 +1,117 @@
+<div class="container alert-info py-5">
+  <form
+    class="border border-danger py-2 col-8 mx-auto"
+    action="post"
+    [formGroup]="myform"
+  >
+    <div class="d-flex flex-column align-items-center mb-2">
+      <label class="col-4 fw-bold fs-5" for="title">Title</label>
+      <input
+        class="col-4 w-50 form-control"
+        type="text"
+        name="producttitle"
+        id="title"
+        formControlName="title"
+      />
+      <!-- {{ title | json }} -->
+
+      <p class="mb-0 w-50 text-danger" *ngIf="!title.valid && title.dirty">
+        *Required Field
+      </p>
+    </div>
+    <div class="d-flex flex-column align-items-center mb-2">
+      <label class="col-4 fw-bold fs-5" for="price">Price</label>
+      <input
+        class="col-4 w-50 form-control"
+        type="number"
+        name="productprice"
+        id="price"
+        formControlName="price"
+      />
+      <p class="mb-0 w-50 text-danger" *ngIf="!price.valid && price.dirty">
+        *Required Field
+      </p>
+    </div>
+    <div class="d-flex flex-column align-items-center mb-2">
+      <label class="col-4 fw-bold fs-5" for="desc">Description</label>
+      <input
+        class="col-4 w-50 form-control"
+        type="text"
+        name="productdescription"
+        id="desc"
+        formControlName="description"
+      />
+    </div>
+    <p
+      class="mb-0 mx-auto w-50 text-danger"
+      *ngIf="!description.valid && description.dirty"
+    >
+      *Required Field
+    </p>
+    <div class="d-flex flex-column align-items-center mb-2">
+      <label class="col-4 fw-bold fs-5" for="image">ImageUrl</label>
+      <input
+        class="col-4 w-50 form-control"
+        type="text"
+        name="productimg"
+        id="image"
+        formControlName="image"
+      />
+    </div>
+    <p
+      class="mb-0 mx-auto w-50 text-danger"
+      *ngIf="!image.valid && image.dirty"
+    >
+      *Required Field
+    </p>
+    <div class="d-flex flex-column align-items-center mb-2">
+      <label class="col-4 fw-bold fs-5" for="category">Category</label>
+      <input
+        class="col-4 w-50 form-control"
+        type="text"
+        name="productcategory"
+        id="category"
+        formControlName="category"
+      />
+    </div>
+    <p
+      class="mb-0 mx-auto w-50 text-danger"
+      *ngIf="!category.valid && category.dirty"
+    >
+      *Required Field
+    </p>
+    <div formGroupName="rating">
+      <div class="d-flex flex-column align-items-center mb-2">
+        <label class="col-4 fw-bold fs-5" for="count">Count</label>
+        <input
+          class="col-4 w-50 form-control"
+          type="number"
+          name="productcount"
+          id="count"
+          formControlName="count"
+        />
+      </div>
+      <div class="d-flex flex-column align-items-center mb-2">
+        <label class="col-4 fw-bold fs-5" for="rate">Rate</label>
+        <input
+          class="col-4 w-50 form-control"
+          type="number"
+          name="productrate"
+          id="rate"
+          formControlName="rate"
+        />
+      </div>
+    </div>
+    <div class="d-flex flex-column align-items-center w-50 mx-auto">
+      <input
+        class="btn btn-success align-self-end"
+        style="cursor: pointer"
+        type="button"
+        value="Add"
+        [disabled]="myform.invalid"
+        (click)="addProduct(myform.value)"
+        [routerLink]="['/products']"
+      />
+    </div>
+  </form>
+</div>
